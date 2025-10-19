@@ -41,4 +41,26 @@ public class OfferService {
         return ResponseEntity.ok( offerLites);
 
     }
+
+    public ResponseEntity<?> getOfferById(Long id){
+       return  offerRepository.findById(id).
+                   map(offer ->
+                       ResponseEntity.ok(offer)).
+                            orElseGet(()-> ResponseEntity.
+                                    notFound().build());
+               
+    }
+
+
+    public ResponseEntity<?>SearchOffer(String tekst){
+        List<Offer> offers =offerRepository.
+                findByTitleContainingOrDescriptionContaining(tekst,tekst).
+                stream().toList();
+        if(offers.isEmpty()){
+            return ResponseEntity.notFound()
+                    .build();
+        }
+        return ResponseEntity.ok(offers);
+    }
+
 }

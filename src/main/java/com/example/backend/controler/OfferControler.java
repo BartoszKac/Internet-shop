@@ -1,11 +1,11 @@
 package com.example.backend.controler;
 
 import com.example.backend.model.Offer;
+import com.example.backend.model.User;
 import com.example.backend.service.OfferService;
+import jakarta.persistence.GeneratedValue;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OfferControler {
@@ -18,13 +18,25 @@ public class OfferControler {
 
 
     @PostMapping("/offer")
-    public ResponseEntity<?> saveOffer(@RequestBody Offer offer){
-        return  offerService.saveoffer(offer);
+    public ResponseEntity<?> saveOffer(@RequestBody Offer offer) {
+        return offerService.saveoffer(offer);
     }
 
-
-    public ResponseEntity<?> getOfferAll(){
+    @GetMapping("/alloffer")
+    public ResponseEntity<?> getOfferAll() {
         return offerService.getOfferAll();
     }
 
+    @GetMapping("/offerById/{id}")
+    public ResponseEntity<?> getOfferById(@PathVariable long id) {
+        return offerService.getOfferById(id);
+    }
+
+
+    @GetMapping("/searchOffer/{search}")
+    public ResponseEntity<?> getOfferByText(@PathVariable String search) {
+
+        return offerService.SearchOffer(search);
+
+    }
 }

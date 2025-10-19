@@ -9,39 +9,38 @@ import jakarta.persistence.Id;
 public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
-    private long UserId;
+    private long id;
+    private long userid;
     private String title;
     private String description;
     private float price;
-    private Long Count;
+    private Long count;
 
 
     public Offer() {
     }
-    public Offer(long id, long userId, String title, String description, float price, Long count) {
-        this.Id = id;
-        UserId = userId;
+    public Offer(long id, long userid, String title, String description, float price, Long count) {
+        this.id = id;
+        this.userid = userid;
         this.title = title;
         this.description = description;
         this.price = price;
-        Count = count;
-    }
+        this.count = count;  }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public long getUserId() {
-        return UserId;
+        return userid;
     }
 
-    public void setUserId(long userId) {
-        UserId = userId;
+    public void setUserId(long userid) {
+        this.userid = userid;
     }
 
     public String getTitle() {
@@ -69,10 +68,10 @@ public class Offer {
     }
 
     public Long getCount() {
-        return Count;
+        return count;
     }
 
     public void setCount(Long count) {
-        Count = count;
+        this.count = count;
     }
 }

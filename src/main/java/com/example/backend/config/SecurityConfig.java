@@ -27,7 +27,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login",
                                 "/register",
-                                "/allUsers")
+                                "/allUsers",
+                                "/alloffer",
+                                "/offerById/*",
+                                "/searchOffer/*")
                                     .permitAll() // te endpointy są publiczne
                                       .anyRequest().authenticated()                        // reszta wymaga JWT
                 )
