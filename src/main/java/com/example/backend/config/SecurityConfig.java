@@ -30,7 +30,8 @@ public class SecurityConfig {
                                 "/allUsers",
                                 "/alloffer",
                                 "/offerById/*",
-                                "/searchOffer/*")
+                                "/searchOffer/*",
+                                "/aichat")
                                     .permitAll() // te endpointy są publiczne
                                       .anyRequest().authenticated()                        // reszta wymaga JWT
                 )
